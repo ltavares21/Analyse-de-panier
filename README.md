@@ -57,9 +57,32 @@ frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(
 frequent_itemsets = frequent_itemsets.sort_values(by='support', ascending=False)
 frequent_itemsets
 ```
-On trouve 537 ensembles fréquents
+On trouve 537 ensembles fréquents.
+
 #### Trouver le top 5 des produits avec un support minimum de 2%
 ```python
 frequent_itemsets[ (frequent_itemsets['length'] == 1) &
                    (frequent_itemsets['support'] >= 0.02) ][0:5]
 ```
+
+Les 5 produits qui se vendent le plus sont : 
+
+* Le porte bougie en forme de coeur blanc (support de 16%)
+* La chaine de Noel en papier ( support de 13%)
+* Le présentoir à gateau " royal family " ( support de 13%)
+* La bouilloire scottie dog( support de 12%)
+* Le chauffe mains babushka( support de 11%)
+
+#### Trouver les groupes de produits avec une longueur de pleus de 1 et avec une support minimal de 5%
+```python
+frequent_itemsets[(frequent_itemsets['length'] > 1) &
+                  (frequent_itemsets['support'] >= 0.05)]
+```
+
+On trouve 5 groupe de 2 produits : 
+
+(PAPER CHAIN KIT VINTAGE CHRISTMAS, PAPER CHAI...	
+(RED HANGING HEART T-LIGHT HOLDER, WHITE HANGI...	
+(HEART OF WICKER LARGE, HEART OF WICKER SMALL)	
+(SCOTTIE DOG HOT WATER BOTTLE, CHOCOLATE HOT W...	
+(RETROSPOT HEART HOT WATER BOTTLE, SCOTTIE DOG..
