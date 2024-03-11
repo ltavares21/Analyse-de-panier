@@ -73,7 +73,7 @@ Les 5 produits qui se vendent le plus sont :
 * La bouilloire scottie dog( support de 12%)
 * Le chauffe mains babushka( support de 11%)
 
-#### Trouver les groupes de produits avec une longueur de plus de 1 et avec une support minimal de 5%
+#### Trouver les groupes de produits avec une longueur de plus de 1 et avec un support minimal de 5%
 ```python
 frequent_itemsets[(frequent_itemsets['length'] > 1) &
                   (frequent_itemsets['support'] >= 0.05)]
@@ -86,3 +86,12 @@ On trouve 5 groupes de 2 produits :
 * (coeur en osier large, coeur en osier petit)	
 * (La bouilloire scottie dog, La bouilloire chocolat)
 * (La bouilloire retrospot, La bouilloire scottie dog)
+
+### Règles associations
+
+#### Trouver le top 10 des associations avec un support minimal de 2%
+```python
+rules = association_rules(frequent_itemsets, metric='support', min_threshold=0.02)
+rules.sort_values(by='confidence', ascending=False)[0:10]
+rules
+```
