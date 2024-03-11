@@ -4,7 +4,7 @@
 
 Le but du projet est de faire une **Market Basket Analysis** ou Analyse de panier avec **Python** pour faire des **suggestions** type "les utilisateurs ont aussi acheté".
 
-Je me suis aidée de cette ressource [Market Basket Analysis](https://medium.com/@khusheekapoor/market-basket-analysis-association-rule-mining-dd632aa31a36/).
+Je me suis aidée de cette ressource pour les notions nécessaires à ce projets (support, associations, lift...) : [Market Basket Analysis](https://medium.com/@khusheekapoor/market-basket-analysis-association-rule-mining-dd632aa31a36/).
 
 ### Source de données
 
@@ -25,7 +25,7 @@ Le dataset utilisé est un échantillon d'un dataset de Kaggle : Il contient les
 
 ## Analyse de panier 👜
 
-### Transformation des listes en transaction
+#### Transformation des listes en transaction
 
 ```python
 paniers = donnees.groupby("CustomerID")["Description"].apply(list).reset_index(name="Panier")
@@ -33,10 +33,33 @@ paniers = donnees.groupby("CustomerID")["Description"].apply(list).reset_index(n
 # Instancier l'encodeur
 encoder = TransactionEncoder()
 
-# Encoder les paniers
+# Encodage des paniers
 paniers_encoded = encoder.fit_transform(paniers['Panier'])
 
-# Créer un DataFrame à partir des données encodées
+# Création du DataFrame à partir des données encodées
 paniers_df = pd.DataFrame(paniers_encoded, columns=encoder.columns_)
 ```
 
+#### Trouver les dimensions du dataframe
+```python
+df.shape ()
+```
+(897, 2355) 
+
+On peut voir qu'il y'a 897 transactions et 2355 produits dans le dataset.
+
+### Algorithme Apriori
+
+##### Utilisation de l'algorithme Apriori pour extraire les ensembles d'articles fréquents
+```python
+frequent_itemsets = apriori(paniers_df, min_support=0.02, use_colnames=True)
+frequent_itemsets['length'] = frequent_itemsets['itemsets'].apply(lambda x: len(x))
+frequent_itemsets = frequent_itemsets.sort_values(by='support', ascending=False)
+frequent_itemsets
+```
+On trouve 537 ensembles fréquents
+#### Trouver le top 5 des produits avec un support minimum de 2%
+```python
+frequent_itemsets[ (frequent_itemsets['length'] == 1) &
+                   (frequent_itemsets['support'] >= 0.02) ][0:5]
+```
