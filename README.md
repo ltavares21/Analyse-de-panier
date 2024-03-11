@@ -96,6 +96,8 @@ rules = association_rules(frequent_itemsets, metric='support', min_threshold=0.0
 rules.sort_values(by='confidence', ascending=False)[0:10]
 rules
 ```
+Voici le top 10 des associations dans le dataset : 
+
 (POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE BATHROOM) ...	(POPPY'S PLAYHOUSE KITCHEN)
 (POPPY'S PLAYHOUSE KITCHEN, POPPY'S PLAYHOUSE ...	(POPPY'S PLAYHOUSE BEDROOM)	
 (HOT WATER BOTTLE I AM SO POORLY, SCOTTIE DOG HOT WATER BOTTLE) ...	(CHOCOLATE HOT WATER BOTTLE)	
@@ -107,8 +109,9 @@ rules
 (POPPY'S PLAYHOUSE LIVINGROOM)	(POPPY'S PLAYHOUSE KITCHEN) 
 (LARGE POPCORN HOLDER)	(SMALL POPCORN HOLDER)
 
-# finding association rules with minimum support of 2% and having lift more than 1
+#### Trouver les règles d'association avec un support d'au moins 2% un lift de plus de 1
 ```python
 rules[(rules['support'] >= 0.02) &
       (rules['lift'] > 1.0)]
 ```
+On trouve 528 associations avec un support minimal de 2% et un lift de plus de 1; cela veut dire que si les ventes d'un produit augmentent celles du produit associé aussi et vice-versa.
