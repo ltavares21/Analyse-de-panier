@@ -79,10 +79,10 @@ frequent_itemsets[(frequent_itemsets['length'] > 1) &
                   (frequent_itemsets['support'] >= 0.05)]
 ```
 
-On trouve 5 groupe de 2 produits : 
+On trouve 5 groupes de 2 produits : 
 
-(PAPER CHAIN KIT VINTAGE CHRISTMAS, PAPER CHAI...	
-(RED HANGING HEART T-LIGHT HOLDER, WHITE HANGI...	
-(HEART OF WICKER LARGE, HEART OF WICKER SMALL)	
-(SCOTTIE DOG HOT WATER BOTTLE, CHOCOLATE HOT W...	
-(RETROSPOT HEART HOT WATER BOTTLE, SCOTTIE DOG..
+* (La chaine de Noel en papier, La chaine en papier vintage)
+* (porte bougie en forme de coeur rouge, porte bougie en forme de coeur blanc)
+* (coeur en osier large, coeur en osier petit)	
+* (La bouilloire scottie dog, La bouilloire chocolat)
+* (La bouilloire retrospot, La bouilloire scottie dog)
