@@ -65,7 +65,7 @@ frequent_itemsets[ (frequent_itemsets['length'] == 1) &
                    (frequent_itemsets['support'] >= 0.02) ][0:5]
 ```
 
-Les 5 produits qui se vendent le plus sont : 
+Les **5** produits qui se vendent le plus sont : 
 
 * Le porte bougie en forme de coeur blanc (support de 16%)
 * La chaine de Noel en papier ( support de 13%)
@@ -79,7 +79,7 @@ frequent_itemsets[(frequent_itemsets['length'] > 1) &
                   (frequent_itemsets['support'] >= 0.05)]
 ```
 
-On trouve 5 groupes de 2 produits : 
+On trouve **5** groupes de **2** produits : 
 
 * (La chaine de Noel en papier, La chaine en papier vintage)
 * (porte bougie en forme de coeur rouge, porte bougie en forme de coeur blanc)
@@ -96,22 +96,30 @@ rules = association_rules(frequent_itemsets, metric='support', min_threshold=0.0
 rules.sort_values(by='confidence', ascending=False)[0:10]
 rules
 ```
-Voici le top 10 des associations dans le dataset : 
+Voici le **top 10** des associations dans le dataset : 
 
-(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE BATHROOM) ...	(POPPY'S PLAYHOUSE KITCHEN)
-(POPPY'S PLAYHOUSE KITCHEN, POPPY'S PLAYHOUSE ...	(POPPY'S PLAYHOUSE BEDROOM)	
-(HOT WATER BOTTLE I AM SO POORLY, SCOTTIE DOG HOT WATER BOTTLE) ...	(CHOCOLATE HOT WATER BOTTLE)	
-(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE KITCHEN)	
-(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE BEDROOM)	
-(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE ...	
-(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE BATHROOM ...	(POPPY'S PLAYHOUSE KITCHEN)	
-(POPPY'S PLAYHOUSE LIVINGROOM, POPPY'S PLAYHOUSE KITCHEN ...	(POPPY'S PLAYHOUSE BEDROOM)	
-(POPPY'S PLAYHOUSE LIVINGROOM)	(POPPY'S PLAYHOUSE KITCHEN) 
-(LARGE POPCORN HOLDER)	(SMALL POPCORN HOLDER)
+1.(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE BATHROOM) ...	(POPPY'S PLAYHOUSE KITCHEN)
+2.(POPPY'S PLAYHOUSE KITCHEN, POPPY'S PLAYHOUSE ...	(POPPY'S PLAYHOUSE BEDROOM)	
+3.(HOT WATER BOTTLE I AM SO POORLY, SCOTTIE DOG HOT WATER BOTTLE) ...	(CHOCOLATE HOT WATER BOTTLE)	
+4.(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE KITCHEN)	
+5.(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE BEDROOM)	
+6.(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE ...	
+7.(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE BATHROOM ...	(POPPY'S PLAYHOUSE KITCHEN)	
+8.(POPPY'S PLAYHOUSE LIVINGROOM, POPPY'S PLAYHOUSE KITCHEN ...	(POPPY'S PLAYHOUSE BEDROOM)	
+9.(POPPY'S PLAYHOUSE LIVINGROOM)	(POPPY'S PLAYHOUSE KITCHEN) 
+10.(LARGE POPCORN HOLDER)	(SMALL POPCORN HOLDER)
 
 #### Trouver les règles d'association avec un support d'au moins 2% un lift de plus de 1
 ```python
 rules[(rules['support'] >= 0.02) &
       (rules['lift'] > 1.0)]
 ```
-On trouve 528 associations avec un support minimal de 2% et un lift de plus de 1; cela veut dire que si les ventes d'un produit augmentent celles du produit associé aussi et vice-versa.
+On trouve **528** associations avec un support minimal de 2% et un lift de plus de 1; cela veut dire que si les ventes d'un produit augmentent celles du produit associé aussi et vice-versa.
+
+
+## Conclusion
+
+Ce projet d'**analyse de panier** avec Python et l'algorithme Apriori a permis d'extraire des informations précieuses sur les **habitudes d'achat des clients**.
+En examinant les **ensembles d'articles fréquents**, il a été possible d'identifier les produits les plus populaires (ex : porte bougie en forme de cœur blanc avec un support de 16%) ainsi que les groupes de produits souvent achetés ensemble ( ex : groupe coeur en osier avec un support de 5% ). 
+
+De plus, grâce aux **règles d'association**, nous avons découvert des liens significatifs entre différents articles comme la relation entre les produits "POPPY'S PLAYHOUSE BEDROOM" et "POPPY'S PLAYHOUSE BATHROOM", qui sont souvent associés au produit "POPPY'S PLAYHOUSE KITCHEN", ce qui pourra pemettre de faire des recommandations pertinentes pour **améliorer les ventes croisées et la satisfaction client**.
