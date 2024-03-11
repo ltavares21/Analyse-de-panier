@@ -73,7 +73,7 @@ Les 5 produits qui se vendent le plus sont :
 * La bouilloire scottie dog( support de 12%)
 * Le chauffe mains babushka( support de 11%)
 
-#### Trouver les groupes de produits avec une longueur de pleus de 1 et avec une support minimal de 5%
+#### Trouver les groupes de produits avec une longueur de plus de 1 et avec une support minimal de 5%
 ```python
 frequent_itemsets[(frequent_itemsets['length'] > 1) &
                   (frequent_itemsets['support'] >= 0.05)]
