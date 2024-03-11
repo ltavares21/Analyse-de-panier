@@ -90,8 +90,25 @@ On trouve 5 groupes de 2 produits :
 ### Règles associations
 
 #### Trouver le top 10 des associations avec un support minimal de 2%
+
 ```python
 rules = association_rules(frequent_itemsets, metric='support', min_threshold=0.02)
 rules.sort_values(by='confidence', ascending=False)[0:10]
 rules
+```
+POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE ...	(POPPY'S PLAYHOUSE KITCHEN)
+(POPPY'S PLAYHOUSE KITCHEN, POPPY'S PLAYHOUSE ...	(POPPY'S PLAYHOUSE BEDROOM)	
+(HOT WATER BOTTLE I AM SO POORLY, SCOTTIE DOG ...	(CHOCOLATE HOT WATER BOTTLE)	
+(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE KITCHEN)	
+(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE BEDROOM)	
+(POPPY'S PLAYHOUSE BATHROOM)	(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE ...	
+(POPPY'S PLAYHOUSE BEDROOM, POPPY'S PLAYHOUSE ...	(POPPY'S PLAYHOUSE KITCHEN)	
+(POPPY'S PLAYHOUSE LIVINGROOM, POPPY'S PLAYHOU...	(POPPY'S PLAYHOUSE BEDROOM)	
+(POPPY'S PLAYHOUSE LIVINGROOM)	(POPPY'S PLAYHOUSE KITCHEN) 
+(LARGE POPCORN HOLDER)	(SMALL POPCORN HOLDER)
+
+# finding association rules with minimum support of 2% and having lift more than 1
+```python
+rules[(rules['support'] >= 0.02) &
+      (rules['lift'] > 1.0)]
 ```
